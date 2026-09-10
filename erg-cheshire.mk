@@ -11,11 +11,12 @@
 BENDER := $(HOME)/.cargo/bin/bender
 # --- Fill in per project ---
 BENDER_TAGS_BASE := -t rtl -t cva6 -t cv64a6_imafdchsclic_sv39_wb
-BENDER_TAGS_SIM  := -t sim -t test
-TOP_MODULE       := tb_cheshire_soc
+BENDER_TAGS_SIM  := 
+TOP_MODULE       := cheshire_soc
 VLT_FILE         := # path to a Verilator waiver file, or leave empty
 
 # --- Bender -> Verilator lint flow ---
+# Requires Verilator 5.052
 verilator_filelist.f: Bender.yml Bender.lock $(MAKEFILE_LIST)
 	$(BENDER) script verilator $(BENDER_TAGS_BASE) $(BENDER_TAGS_SIM) > $@
 
